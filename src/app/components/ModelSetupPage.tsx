@@ -18,6 +18,7 @@ export function ModelSetupPage() {
     replacementCostPerNonGreen: 2000,
     underageCost: 150,
     overageCost: 200,
+    sparePartCost: 10,
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -204,6 +205,21 @@ export function ModelSetupPage() {
                     className="w-full px-4 py-2 bg-input-background rounded-md border border-border focus:outline-none focus:ring-2 focus:ring-ring"
                   />
                   <p className="text-sm text-gray-500 mt-2">Penalty for bringing more spare parts than needed.</p>
+                </div>
+
+                <div>
+                  <label htmlFor="sparePartCost" className="block mb-2">
+                    Spare Part Holding Cost
+                  </label>
+                  <input
+                    id="sparePartCost"
+                    type="number"
+                    min="0"
+                    value={params.sparePartCost}
+                    onChange={(e) => updateParam('sparePartCost', parseFloat(e.target.value))}
+                    className="w-full px-4 py-2 bg-input-background rounded-md border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                  />
+                  <p className="text-sm text-gray-500 mt-2">Cost of holding each spare part in inventory per intervention.</p>
                 </div>
               </div>
             </section>

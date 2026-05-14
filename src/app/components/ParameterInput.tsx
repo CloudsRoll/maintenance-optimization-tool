@@ -14,6 +14,7 @@ export interface SystemParameters {
   replacementCostPerNonGreen: number;
   underageCost: number;
   overageCost: number;
+  sparePartCost: number;
 }
 
 export function ParameterInput({ onRunOptimization }: ParameterInputProps) {
@@ -27,6 +28,7 @@ export function ParameterInput({ onRunOptimization }: ParameterInputProps) {
     replacementCostPerNonGreen: 2000,
     underageCost: 150,
     overageCost: 200,
+    sparePartCost: 10,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -177,6 +179,20 @@ export function ParameterInput({ onRunOptimization }: ParameterInputProps) {
                 min="0"
                 value={params.overageCost}
                 onChange={(e) => updateParam('overageCost', parseFloat(e.target.value))}
+                className="w-full px-4 py-2 bg-input-background rounded-md border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="sparePartCost" className="block mb-2 text-foreground">
+                Spare Part Holding Cost ($)
+              </label>
+              <input
+                id="sparePartCost"
+                type="number"
+                min="0"
+                value={params.sparePartCost}
+                onChange={(e) => updateParam('sparePartCost', parseFloat(e.target.value))}
                 className="w-full px-4 py-2 bg-input-background rounded-md border border-border focus:outline-none focus:ring-2 focus:ring-ring"
               />
             </div>
